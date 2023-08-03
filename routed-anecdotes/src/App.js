@@ -3,6 +3,7 @@ import {
 } from 'react-router-dom'
 
 import { useState } from 'react'
+import { useField } from './hooks'
 
 const Menu = () => {
   const padding = {
@@ -76,38 +77,51 @@ const Notification = ({ notification }) => {
 }
 
 const CreateNew = (props) => {
-  const [content, setContent] = useState('')
-  const [author, setAuthor] = useState('')
-  const [info, setInfo] = useState('')
+  const { reset: resetContent, ...basicContent } = useField('text')
+  const { reset: resetAuthor, ...basicAuthor } = useField('text')
+  const { reset: resetURL, ...basicURL } = useField('text')
 
+  // const [content, setContent] = useState('')
+  // const [author, setAuthor] = useState('')
+  // const [info, setInfo] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
     props.addNew({
-      content,
-      author,
-      info,
+      content: basicContent.value,
+      author: basicAuthor.value,
+      info: basicURL.value,
       votes: 0
     })
+  }
+
+  const handleReset = (e) => {
+    e.preventDefault()
+    resetContent()
+    resetAuthor()
+    resetURL()
   }
 
   return (
     <div>
       <h2>create a new anecdote</h2>
-      <form onSubmit={handleSubmit}>
+      <form >
         <div>
           content
-          <input name='content' value={content} onChange={(e) => setContent(e.target.value)} />
+          {/* <input name='content' value={content} onChange={(e) => setContent(e.target.value)} /> */}
+          <input {...basicContent} />
         </div>
         <div>
           author
-          <input name='author' value={author} onChange={(e) => setAuthor(e.target.value)} />
+          <input {...basicAuthor} />
+          {/* <input name='author' value={author} onChange={(e) => setAuthor(e.target.value)} /> */}
         </div>
         <div>
           url for more info
-          <input name='info' value={info} onChange={(e) => setInfo(e.target.value)} />
+          <input {...basicURL} />
+          {/* <input name='info' value={info} onChange={(e) => setInfo(e.target.value)} /> */}
         </div>
-        <button>create</button>
+        <button type="button" onClick={handleSubmit}>create</button><button type="button" onClick={handleReset}>reset</button>
       </form>
     </div>
   )

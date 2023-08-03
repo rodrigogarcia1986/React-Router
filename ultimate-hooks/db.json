@@ -1,0 +1,46 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "content": "custom hooks are awesome"
+    },
+    {
+      "id": 2,
+      "content": "best feature ever <3"
+    },
+    {
+      "content": "life is tough",
+      "id": 3
+    },
+    {
+      "content": "life is easy",
+      "id": 4
+    },
+    {
+      "content": "hey ho, lets go",
+      "id": 5
+    }
+  ],
+  "persons": [
+    {
+      "id": 1,
+      "name": "Matti Luukkainen",
+      "number": "040-12344565"
+    },
+    {
+      "id": 2,
+      "name": "Tarja Halonen",
+      "number": "040-2223334"
+    },
+    {
+      "name": "rodrick",
+      "number": "9667844545",
+      "id": 3
+    },
+    {
+      "name": "Alikis",
+      "number": "12345678910",
+      "id": 4
+    }
+  ]
+}
